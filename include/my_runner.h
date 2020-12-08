@@ -18,6 +18,13 @@ typedef struct entity {
     struct entity *next;
 } entity_t;
 
+typedef struct {
+    sfFont *font;
+    sfText *score_text;
+    int score;
+    char *str;
+} data_t;
+
 typedef enum {
     bgSky,
     bgCity,
@@ -44,6 +51,7 @@ typedef struct {
     asset_t *asset;
     sfTime time;
     float seconds;
+    data_t *data;
 } game_t;
 
 void move_rect(sfIntRect *rect, int offset, int max_offset);
@@ -59,5 +67,14 @@ void destroy_all(game_t *game);
 
 void event_loop(game_t *game);
 void runner(void);
+
+void init_data(data_t **temp);
+sfText *set_text(sfText *temp, data_t *data, sfColor color);
+void draw_text(game_t *game);
+
+int my_strlen(char const *str);
+char *my_strcat(char *dest, char const *src);
+char *my_revstr(char *str);
+char *my_put_nbr(int nb);
 
 #endif

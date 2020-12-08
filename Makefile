@@ -8,6 +8,8 @@
 SRC 		=	my_runner.c			\
 				entity1.c			\
 				game.c				\
+				data.c				\
+				lib_func.c			\
 
 SRC_MAIN	=	main.c				\
 

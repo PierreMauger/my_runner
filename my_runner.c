@@ -46,7 +46,9 @@ void runner(void)
         event_loop(game);
         sfRenderWindow_clear(game->window, sfBlack);
         draw_bg(game);
+        draw_text(game);
         sfRenderWindow_display(game->window);
+        game->data->score += 1;
     }
     destroy_all(game);
 }
