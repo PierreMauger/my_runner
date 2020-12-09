@@ -15,25 +15,32 @@
 #include <SFML/Audio.h>
 #include "include/my_runner.h"
 
+int change_bool(int value)
+{
+    if (value == 0)
+        value = 1;
+    else
+        value = 0;
+    return value;
+}
+
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
+        if (game->event.type == sfEvtKeyPressed)
+            if (game->event.key.code == sfKeyP)
+                game->game_pause = change_bool(game->game_pause);
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
     }
 }
 
-void draw_bg(game_t *game)
+void draw_all(game_t *game)
 {
-    for (int i = 0; i < bgSize; i++) {
-        sfSprite_move(game->asset->array[i]->sprite, game->asset->array[i]->speed);
-        sfRenderWindow_drawSprite(game->window, game->asset->array[i]->sprite, NULL);
-        sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f){sfSprite_getPosition(game->asset->array[i]->sprite).x + game->w_size.width, 0});
-        sfRenderWindow_drawSprite(game->window, game->asset->array[i]->sprite, NULL);
-        sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f){sfSprite_getPosition(game->asset->array[i]->sprite).x - game->w_size.width, 0});
-        if (-sfSprite_getPosition(game->asset->array[i]->sprite).x > game->w_size.width)
-            sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f){0, 0});
-    }
+    sfRenderWindow_clear(game->window, sfBlack);
+    draw_bg(game);
+    draw_text(game);
+    sfRenderWindow_display(game->window);
 }
 
 void runner(void)
@@ -44,11 +51,9 @@ void runner(void)
     sfRenderWindow_setFramerateLimit(game->window, 60);
     while (sfRenderWindow_isOpen(game->window)) {
         event_loop(game);
-        sfRenderWindow_clear(game->window, sfBlack);
-        draw_bg(game);
-        draw_text(game);
-        sfRenderWindow_display(game->window);
-        game->data->score += 1;
+        if (game->game_pause == 0)
+            update_bg(game);
+        draw_all(game);
     }
     destroy_all(game);
 }

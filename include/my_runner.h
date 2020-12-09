@@ -23,7 +23,7 @@ typedef struct {
     sfText *score_text;
     int score;
     char *str;
-} data_t;
+} text_t;
 
 typedef enum {
     bgSky,
@@ -51,7 +51,8 @@ typedef struct {
     asset_t *asset;
     sfTime time;
     float seconds;
-    data_t *data;
+    text_t *text;
+    int game_pause;
 } game_t;
 
 void move_rect(sfIntRect *rect, int offset, int max_offset);
@@ -62,14 +63,19 @@ void destroy_entity(entity_t *entity);
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_game(game_t *game);
-void init_bg(game_t *game);
 void destroy_all(game_t *game);
 
+int change_bool(int value);
 void event_loop(game_t *game);
+void draw_all(game_t *game);
 void runner(void);
 
-void init_data(data_t **temp);
-sfText *set_text(sfText *temp, data_t *data, sfColor color);
+void init_bg(game_t *game);
+void draw_bg(game_t *game);
+void update_bg(game_t *game);
+
+void init_text(text_t **temp);
+sfText *set_text(sfText *temp, text_t *text, sfColor color);
 void draw_text(game_t *game);
 
 int my_strlen(char const *str);
