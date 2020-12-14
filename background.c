@@ -5,14 +5,6 @@
 ** game
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
 #include "my_runner.h"
 
 void init_bg(game_t *game)
@@ -44,6 +36,7 @@ void draw_bg(game_t *game)
 void update_bg(game_t *game)
 {
     for (int i = 0; i < bgSize; i++)
-        sfSprite_move(game->asset->array[i]->sprite, game->asset->array[i]->speed);
+        sfSprite_move(game->asset->array[i]->sprite,
+        game->asset->array[i]->speed);
     game->text->score += 1;
 }

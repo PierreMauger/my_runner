@@ -5,14 +5,6 @@
 ** game
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
 #include "my_runner.h"
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height)
@@ -34,13 +26,15 @@ void init_game(game_t *game)
     game->asset = malloc(sizeof(asset_t));
     init_bg(game);
     game->text = malloc(sizeof(text_t));
-    init_text(&game->text);
+    init_text(game);
     game->clock = sfClock_create();
     game->game_pause = 0;
+    game->player = malloc(sizeof(player_t));
+    init_player(game);
 }
 
 void destroy_all(game_t *game)
 {
-    //destroy_entity(game->entity);
+    destroy_player(game->player);
     sfRenderWindow_destroy(game->window);
 }

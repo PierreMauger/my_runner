@@ -8,15 +8,23 @@
 #ifndef RUNNER_H
 #define RUNNER_H
 
-typedef struct entity {
-    char *name;
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <SFML/Graphics/RenderWindow.h>
+#include <SFML/Graphics.h>
+#include <SFML/Window.h>
+#include <SFML/System.h>
+#include <SFML/Audio.h>
+
+typedef struct {
     sfVector2f pos;
     sfVector2f speed;
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
-    struct entity *next;
-} entity_t;
+    int cooldown;
+} player_t;
 
 typedef struct {
     sfFont *font;
@@ -46,7 +54,7 @@ typedef struct {
     sfRenderWindow *window;
     sfVideoMode w_size;
     sfEvent event;
-    entity_t *entity;
+    player_t *player;
     sfClock *clock;
     asset_t *asset;
     sfTime time;
@@ -56,10 +64,12 @@ typedef struct {
 } game_t;
 
 void move_rect(sfIntRect *rect, int offset, int max_offset);
-void create_entity(entity_t **list, sfVideoMode w_size);
-void draw_entity(entity_t *entity, sfRenderWindow *window);
-float anim_entity(game_t *game);
-void destroy_entity(entity_t *entity);
+void init_player(game_t *game);
+void draw_player(game_t *game);
+float anim_player(game_t *game);
+void destroy_player(player_t *player);
+
+void player_move(game_t *game);
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_game(game_t *game);
@@ -67,6 +77,7 @@ void destroy_all(game_t *game);
 
 int change_bool(int value);
 void event_loop(game_t *game);
+void update_all(game_t *game);
 void draw_all(game_t *game);
 void runner(void);
 
@@ -74,7 +85,7 @@ void init_bg(game_t *game);
 void draw_bg(game_t *game);
 void update_bg(game_t *game);
 
-void init_text(text_t **temp);
+void init_text(game_t *game);
 sfText *set_text(sfText *temp, text_t *text, sfColor color);
 void draw_text(game_t *game);
 

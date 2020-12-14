@@ -5,14 +5,7 @@
 ** lib_func
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
+#include "my_runner.h"
 
 int my_strlen(char const *str)
 {

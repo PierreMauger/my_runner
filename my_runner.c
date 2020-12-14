@@ -5,15 +5,7 @@
 ** my_runner
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
-#include "include/my_runner.h"
+#include "my_runner.h"
 
 int change_bool(int value)
 {
@@ -27,12 +19,24 @@ int change_bool(int value)
 void event_loop(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
-        if (game->event.type == sfEvtKeyPressed)
+        if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 game->game_pause = change_bool(game->game_pause);
+            if (game->event.key.code == sfKeySpace && game->game_pause == 0 && game->player->cooldown == 30) {
+                game->player->speed.y = -20;
+                game->player->cooldown = 0;
+            }
+        }
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
     }
+}
+
+void update_all(game_t *game)
+{
+    update_bg(game);
+    anim_player(game);
+    player_move(game);
 }
 
 void draw_all(game_t *game)
@@ -40,6 +44,7 @@ void draw_all(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     draw_bg(game);
     draw_text(game);
+    draw_player(game);
     sfRenderWindow_display(game->window);
 }
 
@@ -51,9 +56,10 @@ void runner(void)
     sfRenderWindow_setFramerateLimit(game->window, 60);
     while (sfRenderWindow_isOpen(game->window)) {
         event_loop(game);
-        if (game->game_pause == 0)
-            update_bg(game);
-        draw_all(game);
+        if (game->game_pause == 0){
+            update_all(game);
+            draw_all(game);
+        }
     }
     destroy_all(game);
 }

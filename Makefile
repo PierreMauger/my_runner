@@ -7,6 +7,7 @@
 
 SRC 		=	my_runner.c			\
 				entity1.c			\
+				entity2.c			\
 				game.c				\
 				text.c				\
 				background.c		\

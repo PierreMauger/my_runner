@@ -5,25 +5,16 @@
 ** text
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include <SFML/Graphics/RenderWindow.h>
-#include <SFML/Graphics.h>
-#include <SFML/Window.h>
-#include <SFML/System.h>
-#include <SFML/Audio.h>
 #include "my_runner.h"
 
-void init_text(text_t **temp)
+void init_text(game_t *game)
 {
-    text_t *text = *temp;
-
-    text->str = malloc(10);
-    text->font = sfFont_createFromFile("ressources/font");
-    text->score = 0;
-    text->score_text = set_text(text->score_text, text, sfBlack);
-    sfText_setPosition(text->score_text, (sfVector2f){100, 100});
+    game->text->str = malloc(10);
+    game->text->font = sfFont_createFromFile("ressources/font");
+    game->text->score = 0;
+    game->text->score_text = set_text(game->text->score_text, game->text,
+    sfBlack);
+    sfText_setPosition(game->text->score_text, (sfVector2f){100, 100});
 }
 
 sfText *set_text(sfText *str, text_t *text, sfColor color)
