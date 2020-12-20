@@ -31,10 +31,13 @@ void init_game(game_t *game)
     game->game_pause = 0;
     game->player = malloc(sizeof(player_t));
     init_player(game);
+    game->tile = NULL;
 }
 
-void destroy_all(game_t *game)
+void destroy_all(game_t *game, char *buffer)
 {
+    free(buffer);
     destroy_player(game->player);
+    destroy_map(game->tile);
     sfRenderWindow_destroy(game->window);
 }

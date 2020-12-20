@@ -18,6 +18,8 @@ int change_bool(int value)
 
 void event_loop(game_t *game)
 {
+    tile_t *temp = game->tile;
+
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
@@ -35,6 +37,7 @@ void event_loop(game_t *game)
 void update_all(game_t *game)
 {
     update_bg(game);
+    move_tiles(game);
     anim_player(game);
     player_move(game);
 }
@@ -45,14 +48,16 @@ void draw_all(game_t *game)
     draw_bg(game);
     draw_text(game);
     draw_player(game);
+    draw_map(game);
     sfRenderWindow_display(game->window);
 }
 
-void runner(void)
+void runner(char *buffer)
 {
     game_t *game = malloc(sizeof(game_t));
 
     init_game(game);
+    load_map(game, buffer);
     sfRenderWindow_setFramerateLimit(game->window, 60);
     while (sfRenderWindow_isOpen(game->window)) {
         event_loop(game);
@@ -61,5 +66,5 @@ void runner(void)
             draw_all(game);
         }
     }
-    destroy_all(game);
+    destroy_all(game, buffer);
 }
