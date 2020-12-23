@@ -22,8 +22,9 @@ void event_loop(game_t *game)
         if (game->event.type == sfEvtKeyPressed) {
             if (game->event.key.code == sfKeyP)
                 game->pause = change_bool(game->pause);
-            if (game->event.key.code == sfKeySpace && game->pause == 0 && game->player->cooldown == 30) {
-                game->player->speed.y = -20;
+            if (game->event.key.code == sfKeySpace && game->pause == 0 &&
+            game->player->cooldown == MAX_COOLDOWN) {
+                game->player->speed.y = JUMP_HEIGHT;
                 game->player->cooldown = 0;
             }
         }

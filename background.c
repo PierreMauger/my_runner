@@ -33,7 +33,7 @@ void draw_bg(game_t *game)
     }
 }
 
-void update_bg(game_t *game)
+void move_bg(game_t *game)
 {
     for (int i = 0; i < bgSize; i++)
         sfSprite_move(game->asset->array[i]->sprite,

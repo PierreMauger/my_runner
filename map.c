@@ -16,8 +16,6 @@ void put_in_tile_list(tile_t **tile, sfVector2f pos, char *asset)
     element->sprite = sfSprite_create();
     sfSprite_setTexture(element->sprite, element->texture, sfTrue);
     sfSprite_setPosition(element->sprite, element->pos);
-    element->next = malloc(sizeof(tile_t));
-    element->next = NULL;
     element->next = *tile;
     *tile = element;
 }
@@ -51,11 +49,11 @@ void load_map(game_t *game, char *buffer)
         if (buffer[i] == '\n')
             line += 1;
         if (buffer[i] == '0')
-            put_in_tile_list(&game->tile, (sfVector2f){i * 100 - line * 100
-            * 53, line * 100}, "ressources/grass.png");
+            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line * TILE_SIZE
+            * TILE_COL, line * TILE_SIZE}, "ressources/grass.png");
         if (buffer[i] == '1')
-            put_in_tile_list(&game->tile, (sfVector2f){i * 100 - line * 100
-            * 53, line * 100}, "ressources/dirt.png");
+            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line * TILE_SIZE
+            * TILE_COL, line * TILE_SIZE}, "ressources/dirt.png");
     }
 }
 

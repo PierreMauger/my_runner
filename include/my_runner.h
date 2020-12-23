@@ -21,6 +21,15 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define MAX_COOLDOWN 30
+#define JUMP_HEIGHT -20
+#define TILE_SIZE 100
+#define TILE_COL 53
+#define PLAYER_HEIGHT 114
+#define PLAYER_WIDTH 120
+#define NB_PLAYER_ANIME 4
+#define ANIME_TIME 0.2
+
 typedef struct {
     sfVector2f pos;
     sfVector2f speed;
