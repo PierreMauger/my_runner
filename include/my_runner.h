@@ -71,7 +71,7 @@ typedef struct {
     sfTime time;
     float seconds;
     text_t *text;
-    int game_pause;
+    int pause;
     tile_t *tile;
 } game_t;
 
@@ -81,7 +81,7 @@ void draw_player(game_t *game);
 float anim_player(game_t *game);
 void destroy_player(player_t *player);
 
-void player_move(game_t *game);
+void move_player(game_t *game);
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_game(game_t *game);
@@ -95,7 +95,7 @@ void runner(char *buffer);
 
 void init_bg(game_t *game);
 void draw_bg(game_t *game);
-void update_bg(game_t *game);
+void move_bg(game_t *game);
 
 void init_text(game_t *game);
 sfText *set_text(sfText *temp, text_t *text, sfColor color);

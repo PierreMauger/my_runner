@@ -52,10 +52,10 @@ void load_map(game_t *game, char *buffer)
             line += 1;
         if (buffer[i] == '0')
             put_in_tile_list(&game->tile, (sfVector2f){i * 100 - line * 100
-            * 14, line * 100}, "ressources/grass.png");
+            * 53, line * 100}, "ressources/grass.png");
         if (buffer[i] == '1')
             put_in_tile_list(&game->tile, (sfVector2f){i * 100 - line * 100
-            * 14, line * 100}, "ressources/dirt.png");
+            * 53, line * 100}, "ressources/dirt.png");
     }
 }
 

@@ -28,7 +28,7 @@ void init_game(game_t *game)
     game->text = malloc(sizeof(text_t));
     init_text(game);
     game->clock = sfClock_create();
-    game->game_pause = 0;
+    game->pause = 0;
     game->player = malloc(sizeof(player_t));
     init_player(game);
     game->tile = NULL;

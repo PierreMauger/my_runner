@@ -38,5 +38,4 @@ void update_bg(game_t *game)
     for (int i = 0; i < bgSize; i++)
         sfSprite_move(game->asset->array[i]->sprite,
         game->asset->array[i]->speed);
-    game->text->score += 1;
 }
