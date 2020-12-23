@@ -49,11 +49,11 @@ void load_map(game_t *game, char *buffer)
         if (buffer[i] == '\n')
             line += 1;
         if (buffer[i] == '0')
-            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line * TILE_SIZE
-            * TILE_COL, line * TILE_SIZE}, "ressources/grass.png");
+            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
+            TILE_SIZE * TILE_COL, line * TILE_SIZE}, GRASS_IMG);
         if (buffer[i] == '1')
-            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line * TILE_SIZE
-            * TILE_COL, line * TILE_SIZE}, "ressources/dirt.png");
+            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
+            TILE_SIZE * TILE_COL, line * TILE_SIZE}, DIRT_IMG);
     }
 }
 

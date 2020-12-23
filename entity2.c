@@ -15,9 +15,11 @@ void move_player(game_t *game)
     game->player->speed.y += 1;
     while (temp != NULL) {
         if (game->player->pos.y + PLAYER_HEIGHT > temp->pos.y &&
-        game->player->pos.x < temp->pos.x + TILE_SIZE && game->player->pos.x
-        + PLAYER_WIDTH > temp->pos.x && game->player->cooldown != 0)
+        game->player->pos.x < temp->pos.x + TILE_SIZE && game->player->pos.x +
+        PLAYER_WIDTH > temp->pos.x && game->player->cooldown != 0) {
             game->player->speed.y = 0;
+            game->player->cooldown = MAX_COOLDOWN;
+        }
         temp = temp->next;
     }
     sfSprite_move(game->player->sprite, game->player->speed);

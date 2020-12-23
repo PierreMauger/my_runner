@@ -29,6 +29,11 @@
 #define PLAYER_WIDTH 120
 #define NB_PLAYER_ANIME 4
 #define ANIME_TIME 0.2
+#define PLAYER_IMG "ressources/pidgey.png"
+#define DIRT_IMG "ressources/dirt.png"
+#define GRASS_IMG "ressources/grass.png"
+#define CITY_IMG "ressources/city.png"
+#define SKY_IMG "ressources/sky.png"
 
 typedef struct {
     sfVector2f pos;

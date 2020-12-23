@@ -20,7 +20,7 @@ void init_player(game_t *game)
     game->player->pos = (sfVector2f){200, 620};
     game->player->rect = (sfIntRect){0, 0, PLAYER_WIDTH, PLAYER_HEIGHT};
     game->player->texture = (sfTexture *)sfTexture_createFromFile
-    ("ressources/pidgey.png", NULL);
+    (PLAYER_IMG, NULL);
     game->player->sprite = (sfSprite *)sfSprite_create();
     sfSprite_setPosition(game->player->sprite, game->player->pos);
     game->player->cooldown = MAX_COOLDOWN;
