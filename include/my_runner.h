@@ -36,6 +36,8 @@
 #define GRASS_IMG "ressources/grass.png"
 #define CITY_IMG "ressources/city.png"
 #define SKY_IMG "ressources/sky.png"
+#define PLAYER_SOUND "ressources/pidgey.ogg"
+#define MUSIC_MENU "ressources/music_menu.ogg"
 
 typedef struct {
     sfVector2f pos;
@@ -43,6 +45,8 @@ typedef struct {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
+    sfSoundBuffer *buffer;
+    sfSound *sound;
     int jump;
 } player_t;
 
@@ -80,7 +84,7 @@ typedef struct tile {
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
-    //sound
+    sfMusic *music;
     //sprite_button
 
 } menu_t;

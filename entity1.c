@@ -25,6 +25,9 @@ void init_player(game_t *game)
     game->player->sprite = (sfSprite *)sfSprite_create();
     sfSprite_setPosition(game->player->sprite, game->player->pos);
     game->player->jump = 1;
+    game->player->buffer = sfSoundBuffer_createFromFile(PLAYER_SOUND);
+    game->player->sound = sfSound_create();
+    sfSound_setBuffer(game->player->sound, game->player->buffer);
 }
 
 void draw_player(game_t *game)
@@ -50,4 +53,6 @@ void destroy_player(player_t *player)
 {
     sfTexture_destroy(player->texture);
     sfSprite_destroy(player->sprite);
+    sfSoundBuffer_destroy(player->buffer);
+    sfSound_destroy(player->sound);
 }

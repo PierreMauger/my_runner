@@ -26,6 +26,7 @@ void event_loop(game_t *game)
             game->player->jump == 1) {
                 game->player->speed.y = JUMP_HEIGHT;
                 game->player->jump = 0;
+                sfSound_play(game->player->sound);
             }
         }
         if (game->event.type == sfEvtClosed)
