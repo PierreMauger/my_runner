@@ -35,7 +35,7 @@ void move_tiles(game_t *game)
     tile_t *temp = game->tile;
 
     while (temp != NULL) {
-        sfSprite_move(temp->sprite, (sfVector2f){-2, 0});
+        sfSprite_move(temp->sprite, (sfVector2f){-9, 0});
         temp->pos = sfSprite_getPosition(temp->sprite);
         temp = temp->next;
     }

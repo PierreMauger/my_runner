@@ -21,6 +21,9 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
+#define MAIN_MENU 0
+#define PLAY 1
+#define GAME_OVER 2
 #define MAX_COOLDOWN 30
 #define JUMP_HEIGHT -20
 #define TILE_SIZE 100
@@ -76,6 +79,14 @@ typedef struct tile {
 } tile_t;
 
 typedef struct {
+    sfTexture *texture;
+    sfSprite *sprite;
+    //sound
+    //text?
+    //sprite_button
+} menu_t;
+
+typedef struct {
     sfRenderWindow *window;
     sfVideoMode w_size;
     sfEvent event;
@@ -87,6 +98,8 @@ typedef struct {
     text_t *text;
     int pause;
     tile_t *tile;
+    int state;
+    menu_t *menu;
 } game_t;
 
 void move_rect(sfIntRect *rect, int offset, int max_offset);
@@ -96,9 +109,10 @@ float anim_player(game_t *game);
 void destroy_player(player_t *player);
 
 void move_player(game_t *game);
+int collide_tile(game_t *game, tile_t *tile);
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
-void init_game(game_t *game);
+void init_struct(game_t *game);
 void destroy_all(game_t *game, char *buffer);
 
 int change_bool(int value);
@@ -125,5 +139,10 @@ int my_strlen(char const *str);
 char *my_strcat(char *dest, char const *src);
 char *my_revstr(char *str);
 char *my_put_nbr(int nb);
+
+void game_loop(game_t *game);
+void menu_loop(game_t *game);
+
+void init_menu(game_t *game);
 
 #endif

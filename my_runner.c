@@ -56,15 +56,14 @@ void runner(char *buffer)
 {
     game_t *game = malloc(sizeof(game_t));
 
-    init_game(game);
+    init_struct(game);
     load_map(game, buffer);
     sfRenderWindow_setFramerateLimit(game->window, 60);
     while (sfRenderWindow_isOpen(game->window)) {
-        event_loop(game);
-        if (game->pause == 0){
-            update_all(game);
-            draw_all(game);
-        }
+        if (game->state == MAIN_MENU)
+            menu_loop(game);
+        if (game->state == PLAY)
+            game_loop(game);
     }
     destroy_all(game, buffer);
 }

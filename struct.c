@@ -19,7 +19,7 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int height)
     return (window);
 }
 
-void init_game(game_t *game)
+void init_struct(game_t *game)
 {
     game->w_size = (sfVideoMode){1920, 1080, 32};
     game->window = create_my_window(game->w_size.width, game->w_size.height);
@@ -32,6 +32,9 @@ void init_game(game_t *game)
     game->player = malloc(sizeof(player_t));
     init_player(game);
     game->tile = NULL;
+    game->state = MAIN_MENU;
+    game->menu = malloc(sizeof(menu_t));
+    init_menu(game);
 }
 
 void destroy_all(game_t *game, char *buffer)
