@@ -24,10 +24,10 @@
 #define MENU 0
 #define PLAY 1
 #define GAME_OVER 2
+#define VICTORY 3
 #define MAX_COOLDOWN 30
 #define JUMP_HEIGHT -20
 #define TILE_SIZE 100
-#define TILE_COL 53
 #define PLAYER_HEIGHT 114
 #define PLAYER_WIDTH 120
 #define NB_PLAYER_ANIME 4
@@ -82,7 +82,6 @@ typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     //sound
-    //text?
     //sprite_button
 
 } menu_t;
@@ -92,9 +91,15 @@ typedef struct {
     sfSprite *sprite;
     int opacity;
     //sound
-    //text?
     //sprite_button
 } over_t;
+
+typedef struct {
+    sfTexture *texture;
+    sfSprite *sprite;
+    //sound
+    //sprite_button
+} vict_t;
 
 typedef struct {
     sfRenderWindow *window;
@@ -111,6 +116,7 @@ typedef struct {
     int state;
     menu_t *menu;
     over_t *over;
+    vict_t *vict;
     int map_size;
 } game_t;
 
@@ -127,10 +133,6 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_struct(game_t *game);
 void destroy_all(game_t *game, char *buffer);
 
-int change_bool(int value);
-void event_loop(game_t *game);
-void update_all(game_t *game);
-void draw_all(game_t *game);
 void runner(char *buffer);
 
 void init_bg(game_t *game);
@@ -153,12 +155,20 @@ char *my_revstr(char *str);
 char *my_put_nbr(int nb);
 int my_getnbr(char const *s);
 
+int change_bool(int value);
+void event_loop(game_t *game);
+void update_all(game_t *game);
+void draw_all(game_t *game);
 void game_loop(game_t *game);
-void menu_loop(game_t *game);
+
+void init_over(game_t *game);
 void over_loop(game_t *game, char *buffer);
 void reset_game(game_t *game, char *buffer);
 
 void init_menu(game_t *game);
-void init_over(game_t *game);
+void menu_loop(game_t *game);
+
+void init_vict(game_t *game);
+void victory_loop(game_t *game, char *buffer);
 
 #endif

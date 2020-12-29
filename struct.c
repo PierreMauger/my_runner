@@ -37,6 +37,8 @@ void init_struct(game_t *game)
     init_menu(game);
     game->over = malloc(sizeof(over_t));
     init_over(game);
+    game->vict = malloc(sizeof(vict_t));
+    init_vict(game);
 }
 
 void destroy_all(game_t *game, char *buffer)

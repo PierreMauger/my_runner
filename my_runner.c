@@ -21,6 +21,8 @@ void runner(char *buffer)
             game_loop(game);
         if (game->state == GAME_OVER)
             over_loop(game, buffer);
+        if (game->state == VICTORY)
+            victory_loop(game, buffer);
     }
     destroy_all(game, buffer);
 }
