@@ -23,7 +23,7 @@ void init_player(game_t *game)
     (PLAYER_IMG, NULL);
     game->player->sprite = (sfSprite *)sfSprite_create();
     sfSprite_setPosition(game->player->sprite, game->player->pos);
-    game->player->cooldown = MAX_COOLDOWN;
+    game->player->jump = 1;
 }
 
 void draw_player(game_t *game)

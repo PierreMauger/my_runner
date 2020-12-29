@@ -23,9 +23,9 @@ void event_loop(game_t *game)
             if (game->event.key.code == sfKeyP)
                 game->pause = change_bool(game->pause);
             if (game->event.key.code == sfKeySpace && game->pause == 0 &&
-            game->player->cooldown == MAX_COOLDOWN) {
+            game->player->jump == 1) {
                 game->player->speed.y = JUMP_HEIGHT;
-                game->player->cooldown = 0;
+                game->player->jump = 0;
             }
         }
         if (game->event.type == sfEvtClosed)
@@ -57,7 +57,7 @@ void draw_all(game_t *game)
 void game_loop(game_t *game)
 {
     event_loop(game);
-    if (game->pause == 0){
+    if (game->pause == 0) {
         update_all(game);
         draw_all(game);
     }

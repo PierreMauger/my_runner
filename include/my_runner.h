@@ -25,7 +25,6 @@
 #define PLAY 1
 #define GAME_OVER 2
 #define VICTORY 3
-#define MAX_COOLDOWN 30
 #define JUMP_HEIGHT -20
 #define TILE_SIZE 100
 #define PLAYER_HEIGHT 114
@@ -44,7 +43,7 @@ typedef struct {
     sfIntRect rect;
     sfTexture *texture;
     sfSprite *sprite;
-    int cooldown;
+    int jump;
 } player_t;
 
 typedef struct {
