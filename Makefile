@@ -15,7 +15,7 @@ SRC 		=	my_runner.c			\
 				game.c				\
 				menu.c				\
 				over.c				\
-				victory.c				\
+				victory.c			\
 				lib_func.c			\
 				my_getnbr.c			\
 

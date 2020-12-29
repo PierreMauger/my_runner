@@ -19,6 +19,8 @@ void victory_loop(game_t *game, char *buffer)
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
+        if (game->event.key.code == sfKeyX)
+            game->state = MENU;
         if (game->event.key.code == sfKeySpace)
             reset_game(game, buffer);
     }

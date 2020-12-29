@@ -16,12 +16,12 @@ void move_player(game_t *game)
     while (temp != NULL) {
         if (collide_tile(game, temp) == 1) {
             game->player->speed.y = 0;
+            game->player->pos.y = temp->pos.y - TILE_SIZE;
             game->player->cooldown = MAX_COOLDOWN;
         }
         temp = temp->next;
     }
     sfSprite_move(game->player->sprite, game->player->speed);
-    game->player->pos = sfSprite_getPosition(game->player->sprite);
     if (game->player->cooldown < MAX_COOLDOWN)
         game->player->cooldown += 1;
 }

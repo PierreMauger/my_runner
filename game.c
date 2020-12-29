@@ -40,6 +40,8 @@ void update_all(game_t *game)
     anim_player(game);
     move_player(game);
     game->text->score += 1;
+    if (game->tile->pos.x + TILE_SIZE < 200)
+        game->state = VICTORY;
 }
 
 void draw_all(game_t *game)
@@ -59,6 +61,4 @@ void game_loop(game_t *game)
         update_all(game);
         draw_all(game);
     }
-    if (game->text->score > 300)
-        game->state = GAME_OVER;
 }
