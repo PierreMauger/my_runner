@@ -17,17 +17,17 @@ void init_over(game_t *game)
 
 void over_loop(game_t *game, char *buffer)
 {
+    if (game->over->opacity < 255)
+        game->over->opacity++;
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
-        if (game->event.key.code == sfKeyX)
+        if (game->event.key.code == sfKeyX && game->over->opacity == 255)
             game->state = MENU;
-        if (game->event.key.code == sfKeySpace)
+        if (game->event.key.code == sfKeySpace && game->over->opacity == 255)
             reset_game(game, buffer);
     }
     sfRenderWindow_clear(game->window, sfBlack);
-    if (game->over->opacity < 255)
-        game->over->opacity++;
     sfSprite_setColor(game->over->sprite, sfColor_fromRGBA(255, 255, 255,
     game->over->opacity));
     sfRenderWindow_drawSprite(game->window, game->over->sprite, NULL);
