@@ -9,6 +9,7 @@
 
 void init_over(game_t *game)
 {
+    game->over = malloc(sizeof(over_t));
     game->over->texture = sfTexture_createFromFile(CITY_IMG, NULL);
     game->over->sprite = sfSprite_create();
     sfSprite_setTexture(game->over->sprite, game->over->texture, sfTrue);
@@ -37,9 +38,10 @@ void over_loop(game_t *game, char *buffer)
 void reset_game(game_t *game, char *buffer)
 {
     game->over->opacity = 0;
-    sfSprite_setPosition(game->player->sprite, (sfVector2f){200, 620});
+    sfSprite_setPosition(game->player->sprite, (sfVector2f){200, 400});
     game->tile = NULL;
     load_map(game, buffer);
     game->text->score = 0;
+    game->player->jump = 1;
     game->state = PLAY;
 }

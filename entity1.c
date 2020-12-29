@@ -16,8 +16,9 @@ void move_rect(sfIntRect *rect, int offset, int max_offset)
 
 void init_player(game_t *game)
 {
+    game->player = malloc(sizeof(player_t));
     game->player->speed = (sfVector2f){0, 0};
-    game->player->pos = (sfVector2f){200, 620};
+    game->player->pos = (sfVector2f){200, 400};
     game->player->rect = (sfIntRect){0, 0, PLAYER_WIDTH, PLAYER_HEIGHT};
     game->player->texture = (sfTexture *)sfTexture_createFromFile
     (PLAYER_IMG, NULL);

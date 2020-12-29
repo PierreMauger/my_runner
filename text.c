@@ -9,6 +9,7 @@
 
 void init_text(game_t *game)
 {
+    game->text = malloc(sizeof(text_t));
     game->text->str = malloc(10);
     game->text->font = sfFont_createFromFile("ressources/font");
     game->text->score = 0;

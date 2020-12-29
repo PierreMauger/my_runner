@@ -9,6 +9,7 @@
 
 void init_bg(game_t *game)
 {
+    game->asset = malloc(sizeof(asset_t));
     for (int i = 0; i < bgSize; i++)
         game->asset->array[i] = malloc(sizeof(parallax_t));
     game->asset->array[0]->texture = sfTexture_createFromFile(SKY_IMG, NULL);

@@ -127,6 +127,7 @@ void destroy_player(player_t *player);
 
 void move_player(game_t *game);
 int collide_tile(game_t *game, tile_t *tile);
+int collide_side(game_t *game, tile_t *tile);
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_struct(game_t *game);

@@ -23,21 +23,15 @@ void init_struct(game_t *game)
 {
     game->w_size = (sfVideoMode){1920, 1080, 32};
     game->window = create_my_window(game->w_size.width, game->w_size.height);
-    game->asset = malloc(sizeof(asset_t));
     init_bg(game);
-    game->text = malloc(sizeof(text_t));
     init_text(game);
     game->clock = sfClock_create();
     game->pause = 0;
-    game->player = malloc(sizeof(player_t));
     init_player(game);
     game->tile = NULL;
     game->state = MENU;
-    game->menu = malloc(sizeof(menu_t));
     init_menu(game);
-    game->over = malloc(sizeof(over_t));
     init_over(game);
-    game->vict = malloc(sizeof(vict_t));
     init_vict(game);
 }
 

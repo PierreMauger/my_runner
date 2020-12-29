@@ -9,6 +9,7 @@
 
 void init_menu(game_t *game)
 {
+    game->menu = malloc(sizeof(menu_t));
     game->menu->texture = sfTexture_createFromFile(SKY_IMG, NULL);
     game->menu->sprite = sfSprite_create();
     sfSprite_setTexture(game->menu->sprite, game->menu->texture, sfTrue);

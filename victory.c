@@ -9,6 +9,7 @@
 
 void init_vict(game_t *game)
 {
+    game->vict = malloc(sizeof(vict_t));
     game->vict->texture = sfTexture_createFromFile(CITY_IMG, NULL);
     game->vict->sprite = sfSprite_create();
     sfSprite_setTexture(game->vict->sprite, game->vict->texture, sfTrue);
