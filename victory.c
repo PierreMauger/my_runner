@@ -29,3 +29,9 @@ void victory_loop(game_t *game, char *buffer)
     sfRenderWindow_drawSprite(game->window, game->vict->sprite, NULL);
     sfRenderWindow_display(game->window);
 }
+
+void destroy_vict(vict_t *vict)
+{
+    sfTexture_destroy(vict->texture);
+    sfSprite_destroy(vict->sprite);
+}

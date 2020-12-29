@@ -25,14 +25,14 @@ void init_struct(game_t *game)
     game->window = create_my_window(game->w_size.width, game->w_size.height);
     init_bg(game);
     init_text(game);
-    game->clock = sfClock_create();
-    game->pause = 0;
     init_player(game);
-    game->tile = NULL;
-    game->state = MENU;
     init_menu(game);
     init_over(game);
     init_vict(game);
+    game->clock = sfClock_create();
+    game->pause = 0;
+    game->tile = NULL;
+    game->state = MENU;
 }
 
 void destroy_all(game_t *game, char *buffer)
@@ -40,5 +40,8 @@ void destroy_all(game_t *game, char *buffer)
     free(buffer);
     destroy_player(game->player);
     destroy_map(game->tile);
+    destroy_menu(game->menu);
+    destroy_over(game->over);
+    destroy_vict(game->vict);
     sfRenderWindow_destroy(game->window);
 }

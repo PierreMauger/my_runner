@@ -27,3 +27,9 @@ void menu_loop(game_t *game)
     sfRenderWindow_drawSprite(game->window, game->menu->sprite, NULL);
     sfRenderWindow_display(game->window);
 }
+
+void destroy_menu(menu_t *menu)
+{
+    sfTexture_destroy(menu->texture);
+    sfSprite_destroy(menu->sprite);
+}

@@ -164,11 +164,14 @@ void game_loop(game_t *game);
 void init_over(game_t *game);
 void over_loop(game_t *game, char *buffer);
 void reset_game(game_t *game, char *buffer);
+void destroy_over(over_t *over);
 
 void init_menu(game_t *game);
 void menu_loop(game_t *game);
+void destroy_menu(menu_t *menu);
 
 void init_vict(game_t *game);
 void victory_loop(game_t *game, char *buffer);
+void destroy_vict(vict_t *vict);
 
 #endif

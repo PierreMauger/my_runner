@@ -45,3 +45,9 @@ void reset_game(game_t *game, char *buffer)
     game->player->jump = 1;
     game->state = PLAY;
 }
+
+void destroy_over(over_t *over)
+{
+    sfTexture_destroy(over->texture);
+    sfSprite_destroy(over->sprite);
+}
