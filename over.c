@@ -23,11 +23,8 @@ void over_loop(game_t *game, char *buffer)
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
-        if (game->event.key.code == sfKeyX && game->over->opacity == 255) {
-            sfMusic_play(game->menu->music);
-            sfMusic_setLoop(game->menu->music, 1);
-            game->state = MENU;
-        }
+        if (game->event.key.code == sfKeyX && game->over->opacity == 255)
+            go_to_menu(game);
         if (game->event.key.code == sfKeySpace && game->over->opacity == 255)
             reset_game(game, buffer);
     }
