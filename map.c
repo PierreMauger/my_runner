@@ -45,15 +45,16 @@ void load_map(game_t *game, char *buffer)
 {
     int line = 0;
 
-    for (int i = 0; buffer[i] != '\0'; i++) {
-        if (buffer[i] == '\n')
+    game->map_size = my_getnbr(buffer);
+    for (int i = 0; buffer[i + 4] != '\0'; i++) {
+        if (buffer[i + 4] == '\n')
             line += 1;
-        if (buffer[i] == '0')
+        if (buffer[i + 4] == '0')
             put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
-            TILE_SIZE * TILE_COL, line * TILE_SIZE}, GRASS_IMG);
-        if (buffer[i] == '1')
+            TILE_SIZE * game->map_size, line * TILE_SIZE}, GRASS_IMG);
+        if (buffer[i + 4] == '1')
             put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
-            TILE_SIZE * TILE_COL, line * TILE_SIZE}, DIRT_IMG);
+            TILE_SIZE * game->map_size, line * TILE_SIZE}, DIRT_IMG);
     }
 }
 

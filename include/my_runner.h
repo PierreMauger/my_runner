@@ -111,6 +111,7 @@ typedef struct {
     int state;
     menu_t *menu;
     over_t *over;
+    int map_size;
 } game_t;
 
 void move_rect(sfIntRect *rect, int offset, int max_offset);
@@ -150,6 +151,7 @@ int my_strlen(char const *str);
 char *my_strcat(char *dest, char const *src);
 char *my_revstr(char *str);
 char *my_put_nbr(int nb);
+int my_getnbr(char const *s);
 
 void game_loop(game_t *game);
 void menu_loop(game_t *game);

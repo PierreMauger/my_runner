@@ -16,6 +16,7 @@ SRC 		=	my_runner.c			\
 				menu.c				\
 				over.c				\
 				lib_func.c			\
+				my_getnbr.c			\
 
 SRC_MAIN	=	main.c				\
 
