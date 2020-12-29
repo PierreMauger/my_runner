@@ -21,7 +21,7 @@
 #include <SFML/System.h>
 #include <SFML/Audio.h>
 
-#define MAIN_MENU 0
+#define MENU 0
 #define PLAY 1
 #define GAME_OVER 2
 #define MAX_COOLDOWN 30
@@ -84,7 +84,17 @@ typedef struct {
     //sound
     //text?
     //sprite_button
+
 } menu_t;
+
+typedef struct {
+    sfTexture *texture;
+    sfSprite *sprite;
+    int opacity;
+    //sound
+    //text?
+    //sprite_button
+} over_t;
 
 typedef struct {
     sfRenderWindow *window;
@@ -100,6 +110,7 @@ typedef struct {
     tile_t *tile;
     int state;
     menu_t *menu;
+    over_t *over;
 } game_t;
 
 void move_rect(sfIntRect *rect, int offset, int max_offset);
@@ -142,7 +153,10 @@ char *my_put_nbr(int nb);
 
 void game_loop(game_t *game);
 void menu_loop(game_t *game);
+void over_loop(game_t *game, char *buffer);
+void reset_game(game_t *game, char *buffer);
 
 void init_menu(game_t *game);
+void init_over(game_t *game);
 
 #endif

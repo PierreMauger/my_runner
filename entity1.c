@@ -36,12 +36,10 @@ void draw_player(game_t *game)
 
 float anim_player(game_t *game)
 {
-    player_t *temp = game->player;
-
     game->time = sfClock_getElapsedTime(game->clock);
     game->seconds = game->time.microseconds / 1000000.0;
     if (game->seconds > ANIME_TIME) {
-        move_rect(&temp->rect, PLAYER_WIDTH, PLAYER_WIDTH * NB_PLAYER_ANIME);
+        move_rect(&game->player->rect, PLAYER_WIDTH, PLAYER_WIDTH * NB_PLAYER_ANIME);
         sfClock_restart(game->clock);
     }
     return game->seconds;

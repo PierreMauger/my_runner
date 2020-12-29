@@ -12,8 +12,9 @@ SRC 		=	my_runner.c			\
 				text.c				\
 				background.c		\
 				map.c				\
-				loop.c				\
+				game.c				\
 				menu.c				\
+				over.c				\
 				lib_func.c			\
 
 SRC_MAIN	=	main.c				\

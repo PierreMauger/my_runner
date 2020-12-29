@@ -32,9 +32,11 @@ void init_struct(game_t *game)
     game->player = malloc(sizeof(player_t));
     init_player(game);
     game->tile = NULL;
-    game->state = MAIN_MENU;
+    game->state = MENU;
     game->menu = malloc(sizeof(menu_t));
     init_menu(game);
+    game->over = malloc(sizeof(over_t));
+    init_over(game);
 }
 
 void destroy_all(game_t *game, char *buffer)
