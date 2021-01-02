@@ -86,13 +86,13 @@ typedef struct {
     sfSprite *sprite;
     sfMusic *music;
     //sprite_button
-
 } menu_t;
 
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     int opacity;
+    sfMusic *music;
     //sound
     //sprite_button
 } over_t;
@@ -100,6 +100,7 @@ typedef struct {
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
+    sfMusic *music;
     //sound
     //sprite_button
 } vict_t;
@@ -109,6 +110,7 @@ typedef struct {
     sfVideoMode w_size;
     sfEvent event;
     player_t *player;
+    sfMusic *music;
     sfClock *clock;
     asset_t *asset;
     sfTime time;
@@ -130,6 +132,7 @@ float anim_player(game_t *game);
 void destroy_player(player_t *player);
 
 void move_player(game_t *game);
+void player_land(game_t *game, tile_t *temp);
 int collide_tile(game_t *game, tile_t *tile);
 int collide_side(game_t *game, tile_t *tile);
 
@@ -137,6 +140,7 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_struct(game_t *game);
 void destroy_all(game_t *game, char *buffer);
 
+void change_music(sfMusic *old_source, sfMusic *new_source);
 void runner(char *buffer);
 
 void init_bg(game_t *game);
@@ -167,7 +171,7 @@ void game_loop(game_t *game);
 
 void init_over(game_t *game);
 void over_loop(game_t *game, char *buffer);
-void reset_game(game_t *game, char *buffer);
+void reset_game(game_t *game, sfMusic *old_source, char *buffer);
 void destroy_over(over_t *over);
 
 void init_menu(game_t *game);

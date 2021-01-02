@@ -13,6 +13,7 @@ void init_vict(game_t *game)
     game->vict->texture = sfTexture_createFromFile(CITY_IMG, NULL);
     game->vict->sprite = sfSprite_create();
     sfSprite_setTexture(game->vict->sprite, game->vict->texture, sfTrue);
+    game->vict->music = sfMusic_createFromFile(MUSIC_MENU);
 }
 
 void victory_loop(game_t *game, char *buffer)
@@ -20,10 +21,12 @@ void victory_loop(game_t *game, char *buffer)
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
-        if (game->event.key.code == sfKeyX)
+        if (game->event.key.code == sfKeyX) {
+            change_music(game->vict->music, game->menu->music);
             game->state = MENU;
+        }
         if (game->event.key.code == sfKeySpace)
-            reset_game(game, buffer);
+            reset_game(game, game->vict->music, buffer);
     }
     sfRenderWindow_clear(game->window, sfBlack);
     sfRenderWindow_drawSprite(game->window, game->vict->sprite, NULL);
@@ -34,4 +37,5 @@ void destroy_vict(vict_t *vict)
 {
     sfTexture_destroy(vict->texture);
     sfSprite_destroy(vict->sprite);
+    sfMusic_destroy(vict->music);
 }

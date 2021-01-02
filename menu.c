@@ -25,6 +25,7 @@ void menu_loop(game_t *game)
             sfRenderWindow_close(game->window);
         if (game->event.key.code == sfKeySpace) {
             sfMusic_stop(game->menu->music);
+            change_music(game->menu->music, game->music);
             game->state = PLAY;
         }
     }
@@ -42,7 +43,6 @@ void destroy_menu(menu_t *menu)
 
 void go_to_menu(game_t *game)
 {
-    sfMusic_play(game->menu->music);
-    sfMusic_setLoop(game->menu->music, 1);
+    change_music(game->over->music, game->menu->music);
     game->state = MENU;
 }

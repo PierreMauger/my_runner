@@ -23,6 +23,7 @@ void init_struct(game_t *game)
 {
     game->w_size = (sfVideoMode){1920, 1080, 32};
     game->window = create_my_window(game->w_size.width, game->w_size.height);
+    game->music = sfMusic_createFromFile(MUSIC_MENU);
     init_bg(game);
     init_text(game);
     init_player(game);
@@ -38,6 +39,7 @@ void init_struct(game_t *game)
 void destroy_all(game_t *game, char *buffer)
 {
     free(buffer);
+    sfMusic_destroy(game->music);
     destroy_player(game->player);
     destroy_map(game->tile);
     destroy_menu(game->menu);

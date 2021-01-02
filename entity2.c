@@ -15,19 +15,25 @@ void move_player(game_t *game)
     if (game->player->speed.y < 20)
         game->player->speed.y += 1;
     while (temp != NULL) {
-        if (collide_side(game, temp))
+        if (collide_side(game, temp)) {
+            change_music(game->music, game->over->music);
             game->state = GAME_OVER;
+        }
         else
-            if (collide_tile(game, temp)) {
-                if (game->player->speed.y != JUMP_HEIGHT + 1)
-                    game->player->speed.y = 0;
-                game->player->pos.y = temp->pos.y - TILE_SIZE;
-                game->player->jump = 1;
-                sfSprite_setPosition(game->player->sprite, game->player->pos);
-            }
+            if (collide_tile(game, temp))
+                player_land(game, temp);
         temp = temp->next;
     }
     sfSprite_move(game->player->sprite, game->player->speed);
+}
+
+void player_land(game_t *game, tile_t *temp)
+{
+    if (game->player->speed.y != JUMP_HEIGHT + 1)
+        game->player->speed.y = 0;
+    game->player->pos.y = temp->pos.y - TILE_SIZE;
+    game->player->jump = 1;
+    sfSprite_setPosition(game->player->sprite, game->player->pos);
 }
 
 int collide_tile(game_t *game, tile_t *tile)

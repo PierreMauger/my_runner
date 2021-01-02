@@ -7,6 +7,14 @@
 
 #include "my_runner.h"
 
+void change_music(sfMusic *old_source, sfMusic *new_source)
+{
+    sfMusic_stop(old_source);
+    sfMusic_play(new_source);
+    sfMusic_setLoop(new_source, 1);
+}
+
+
 void runner(char *buffer)
 {
     game_t *game = malloc(sizeof(game_t));

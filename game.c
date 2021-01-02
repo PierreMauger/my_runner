@@ -41,8 +41,10 @@ void update_all(game_t *game)
     anim_player(game);
     move_player(game);
     game->text->score += 1;
-    if (game->tile->pos.x + TILE_SIZE < 200)
+    if (game->tile->pos.x + TILE_SIZE < 200) {
+        change_music(game->music, game->vict->music);
         game->state = VICTORY;
+    }
 }
 
 void draw_all(game_t *game)
