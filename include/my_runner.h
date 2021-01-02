@@ -27,11 +27,11 @@
 #define VICTORY 3
 #define JUMP_HEIGHT -20
 #define TILE_SIZE 100
-#define PLAYER_HEIGHT 114
-#define PLAYER_WIDTH 120
-#define NB_PLAYER_ANIME 4
-#define ANIME_TIME 0.2
-#define PLAYER_IMG "ressources/pidgey.png"
+#define PLAYER_HEIGHT 160
+#define PLAYER_WIDTH 92
+#define NB_PLAYER_ANIME 8
+#define ANIME_TIME 0.15
+#define PLAYER_IMG "ressources/run_sprite.png"
 #define DIRT_IMG "ressources/dirt.png"
 #define GRASS_IMG "ressources/grass.png"
 #define BACK_IMG "ressources/city_back.png"
@@ -56,6 +56,7 @@ typedef struct enemy {
     sfVector2f pos;
     sfTexture *texture;
     sfSprite *sprite;
+    sfIntRect rect;
     struct enemy *next;
 } enemy_t;
 
@@ -143,7 +144,7 @@ float anim_player(game_t *game);
 void destroy_player(player_t *player);
 
 void move_player(game_t *game);
-void player_land(game_t *game, tile_t *temp);
+void check_all_collide(game_t *game, tile_t *temp);
 int collide_tile(game_t *game, tile_t *tile);
 int collide_side(game_t *game, tile_t *tile);
 int collide_hits(game_t *game, enemy_t *tile);
