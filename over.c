@@ -43,6 +43,8 @@ void reset_game(game_t *game, sfMusic *old_source, char *buffer)
     sfSprite_setPosition(game->player->sprite, (sfVector2f){200, 400});
     game->tile = NULL;
     load_map(game, buffer);
+    game->enemy = NULL;
+    spawn_entity(game);
     game->text->score = 0;
     game->player->jump = 1;
     game->state = PLAY;

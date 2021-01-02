@@ -33,6 +33,7 @@ void init_struct(game_t *game)
     game->clock = sfClock_create();
     game->pause = 0;
     game->tile = NULL;
+    game->enemy = NULL;
     game->state = MENU;
 }
 

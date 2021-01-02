@@ -40,6 +40,7 @@ void update_all(game_t *game)
     move_tiles(game);
     anim_player(game);
     move_player(game);
+    move_enemy(game);
     game->text->score += 1;
     if (game->tile->pos.x + TILE_SIZE < 200) {
         change_music(game->music, game->vict->music);
@@ -54,6 +55,7 @@ void draw_all(game_t *game)
     draw_text(game);
     draw_player(game);
     draw_map(game);
+    draw_enemy(game);
     sfRenderWindow_display(game->window);
 }
 

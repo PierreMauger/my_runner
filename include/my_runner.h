@@ -50,6 +50,13 @@ typedef struct {
     int jump;
 } player_t;
 
+typedef struct enemy {
+    sfVector2f pos;
+    sfTexture *texture;
+    sfSprite *sprite;
+    struct enemy *next;
+} enemy_t;
+
 typedef struct {
     sfFont *font;
     sfText *score_text;
@@ -75,9 +82,9 @@ typedef struct {
 } asset_t;
 
 typedef struct tile {
+    sfVector2f pos;
     sfTexture *texture;
     sfSprite *sprite;
-    sfVector2f pos;
     struct tile *next;
 } tile_t;
 
@@ -110,6 +117,7 @@ typedef struct {
     sfVideoMode w_size;
     sfEvent event;
     player_t *player;
+    enemy_t *enemy;
     sfMusic *music;
     sfClock *clock;
     asset_t *asset;
@@ -135,6 +143,7 @@ void move_player(game_t *game);
 void player_land(game_t *game, tile_t *temp);
 int collide_tile(game_t *game, tile_t *tile);
 int collide_side(game_t *game, tile_t *tile);
+int collide_hits(game_t *game, enemy_t *tile);
 
 sfRenderWindow *create_my_window(unsigned int width, unsigned int height);
 void init_struct(game_t *game);
@@ -182,5 +191,10 @@ void go_to_menu(game_t *game);
 void init_vict(game_t *game);
 void victory_loop(game_t *game, char *buffer);
 void destroy_vict(vict_t *vict);
+
+void put_in_enemy_list(enemy_t **enemy, sfVector2f pos, char *asset);
+void spawn_entity(game_t *game);
+void draw_enemy(game_t *game);
+void move_enemy(game_t *game);
 
 #endif

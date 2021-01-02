@@ -21,6 +21,7 @@ void runner(char *buffer)
 
     init_struct(game);
     load_map(game, buffer);
+    spawn_entity(game);
     sfRenderWindow_setFramerateLimit(game->window, 60);
     while (sfRenderWindow_isOpen(game->window)) {
         if (game->state == MENU)
