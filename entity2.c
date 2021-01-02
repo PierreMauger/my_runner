@@ -29,7 +29,7 @@ void move_player(game_t *game)
     enemy_t *hits = game->enemy;
 
     game->player->pos = sfSprite_getPosition(game->player->sprite);
-    if (game->player->speed.y < 20)
+    if (game->player->speed.y < 30)
         game->player->speed.y += 1;
     while (temp != NULL) {
         check_all_collide(game, temp);
@@ -43,6 +43,7 @@ void move_player(game_t *game)
         hits = hits->next;
     }
     sfSprite_move(game->player->sprite, game->player->speed);
+    //sfSprite_move(game->player->sprite, game->player->speed);
 }
 
 int collide_tile(game_t *game, tile_t *tile)

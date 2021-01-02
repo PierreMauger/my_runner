@@ -25,7 +25,7 @@
 #define PLAY 1
 #define GAME_OVER 2
 #define VICTORY 3
-#define JUMP_HEIGHT -20
+#define JUMP_HEIGHT -25
 #define TILE_SIZE 100
 #define PLAYER_HEIGHT 160
 #define PLAYER_WIDTH 92

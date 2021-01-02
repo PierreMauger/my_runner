@@ -35,7 +35,6 @@ void draw_player(game_t *game)
     sfSprite_setTexture(game->player->sprite, game->player->texture, sfTrue);
     sfSprite_setTextureRect(game->player->sprite, game->player->rect);
     sfRenderWindow_drawSprite(game->window, game->player->sprite, NULL);
-    sfSprite_move(game->player->sprite, game->player->speed);
 }
 
 float anim_player(game_t *game)
