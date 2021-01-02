@@ -12,16 +12,19 @@ void init_bg(game_t *game)
     game->asset = malloc(sizeof(asset_t));
     for (int i = 0; i < bgSize; i++)
         game->asset->array[i] = malloc(sizeof(parallax_t));
-    game->asset->array[0]->texture = sfTexture_createFromFile(SKY_IMG, NULL);
-    game->asset->array[0]->sprite = sfSprite_create();
-    game->asset->array[0]->speed = (sfVector2f){-1, 0};
-    sfSprite_setTexture(game->asset->array[0]->sprite,
-    game->asset->array[0]->texture, sfTrue);
-    game->asset->array[1]->texture = sfTexture_createFromFile(CITY_IMG, NULL);
-    game->asset->array[1]->sprite = sfSprite_create();
-    game->asset->array[1]->speed = (sfVector2f){-5, 0};
-    sfSprite_setTexture(game->asset->array[1]->sprite,
-    game->asset->array[1]->texture, sfTrue);
+    create_bg(game, 0, -1, SKY_IMG);
+    create_bg(game, 1, -3, BACK_IMG);
+    create_bg(game, 2, -5, MIDDLE_IMG);
+    create_bg(game, 3, -7, FRONT_IMG);
+}
+
+void create_bg(game_t *game, int nb, int speed, char *img)
+{
+    game->asset->array[nb]->texture = sfTexture_createFromFile(img, NULL);
+    game->asset->array[nb]->sprite = sfSprite_create();
+    game->asset->array[nb]->speed = (sfVector2f){speed, 0};
+    sfSprite_setTexture(game->asset->array[nb]->sprite,
+    game->asset->array[nb]->texture, sfTrue);
 }
 
 void draw_bg(game_t *game)

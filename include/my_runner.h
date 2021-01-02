@@ -34,7 +34,9 @@
 #define PLAYER_IMG "ressources/pidgey.png"
 #define DIRT_IMG "ressources/dirt.png"
 #define GRASS_IMG "ressources/grass.png"
-#define CITY_IMG "ressources/city.png"
+#define BACK_IMG "ressources/city_back.png"
+#define MIDDLE_IMG "ressources/city_middle.png"
+#define FRONT_IMG "ressources/city_front.png"
 #define SKY_IMG "ressources/sky.png"
 #define PLAYER_SOUND "ressources/pidgey.ogg"
 #define MUSIC_MENU "ressources/music_menu.ogg"
@@ -66,8 +68,9 @@ typedef struct {
 
 typedef enum {
     bgSky,
-    bgCity,
-
+    bgCityBack,
+    bgCityMiddle,
+    bgCityFront,
     bgSize
 } enum_t;
 
@@ -153,6 +156,7 @@ void change_music(sfMusic *old_source, sfMusic *new_source);
 void runner(char *buffer);
 
 void init_bg(game_t *game);
+void create_bg(game_t *game, int nb, int speed, char *img);
 void draw_bg(game_t *game);
 void move_bg(game_t *game);
 

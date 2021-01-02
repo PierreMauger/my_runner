@@ -10,7 +10,7 @@
 void init_over(game_t *game)
 {
     game->over = malloc(sizeof(over_t));
-    game->over->texture = sfTexture_createFromFile(CITY_IMG, NULL);
+    game->over->texture = sfTexture_createFromFile(FRONT_IMG, NULL);
     game->over->sprite = sfSprite_create();
     sfSprite_setTexture(game->over->sprite, game->over->texture, sfTrue);
     game->over->opacity = 0;
