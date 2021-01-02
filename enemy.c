@@ -46,3 +46,12 @@ void move_enemy(game_t *game)
         temp = temp->next;
     }
 }
+
+void destroy_enemy(enemy_t *enemy)
+{
+    while (enemy != NULL) {
+        sfTexture_destroy(enemy->texture);
+        sfSprite_destroy(enemy->sprite);
+        enemy = enemy->next;
+    }
+}

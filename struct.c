@@ -42,6 +42,7 @@ void destroy_all(game_t *game, char *buffer)
     free(buffer);
     sfMusic_destroy(game->music);
     destroy_player(game->player);
+    destroy_enemy(game->enemy);
     destroy_map(game->tile);
     destroy_menu(game->menu);
     destroy_over(game->over);

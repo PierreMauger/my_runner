@@ -196,5 +196,6 @@ void put_in_enemy_list(enemy_t **enemy, sfVector2f pos, char *asset);
 void spawn_entity(game_t *game);
 void draw_enemy(game_t *game);
 void move_enemy(game_t *game);
+void destroy_enemy(enemy_t *enemy);
 
 #endif
