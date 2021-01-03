@@ -16,7 +16,7 @@ void put_in_enemy_list(enemy_t **enemy, sfVector2f pos, char *asset)
     element->sprite = sfSprite_create();
     sfSprite_setTexture(element->sprite, element->texture, sfTrue);
     sfSprite_setPosition(element->sprite, element->pos);
-    element->rect = (sfIntRect){0, 0, PLAYER_WIDTH, PLAYER_HEIGHT};
+    element->rect = (sfIntRect){0, 0, ENEMY_WIDTH, ENEMY_HEIGHT};
     element->next = *enemy;
     *enemy = element;
 }
@@ -25,7 +25,7 @@ void spawn_entity(game_t *game)
 {
     for (int i = 0; i < game->map_size / 10; i++)
         put_in_enemy_list(&game->enemy, (sfVector2f){rand() % (game->map_size -
-        100) * TILE_SIZE + 1000, rand() % 300 + 100}, DIRT_IMG);
+        100) * TILE_SIZE + 1000, rand() % 300 + 100}, ENEMY_IMG);
 }
 
 void draw_enemy(game_t *game)

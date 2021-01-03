@@ -43,7 +43,6 @@ void move_player(game_t *game)
         hits = hits->next;
     }
     sfSprite_move(game->player->sprite, game->player->speed);
-    //sfSprite_move(game->player->sprite, game->player->speed);
 }
 
 int collide_tile(game_t *game, tile_t *tile)
@@ -67,8 +66,8 @@ int collide_side(game_t *game, tile_t *tile)
 int collide_hits(game_t *game, enemy_t *tile)
 {
     if (game->player->pos.x + PLAYER_WIDTH > tile->pos.x && game->player->pos.x
-        < tile->pos.x + TILE_SIZE && game->player->pos.y < tile->pos.y +
-        TILE_SIZE && game->player->pos.y + PLAYER_HEIGHT > tile->pos.y)
+        < tile->pos.x + ENEMY_WIDTH && game->player->pos.y < tile->pos.y +
+        ENEMY_HEIGHT && game->player->pos.y + PLAYER_HEIGHT > tile->pos.y)
         return 1;
     return 0;
 }

@@ -29,9 +29,13 @@
 #define TILE_SIZE 100
 #define PLAYER_HEIGHT 160
 #define PLAYER_WIDTH 92
-#define NB_PLAYER_ANIME 8
+#define ENEMY_HEIGHT 80
+#define ENEMY_WIDTH 120
+#define NB_ANIM_E 2
+#define NB_ANIM_P 8
 #define ANIME_TIME 0.15
 #define PLAYER_IMG "ressources/run_sprite.png"
+#define ENEMY_IMG "ressources/missile.png"
 #define DIRT_IMG "ressources/dirt.png"
 #define GRASS_IMG "ressources/grass.png"
 #define BACK_IMG "ressources/city_back.png"
