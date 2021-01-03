@@ -10,9 +10,10 @@
 void init_over(game_t *game)
 {
     game->over = malloc(sizeof(over_t));
-    game->over->texture = sfTexture_createFromFile(FRONT_IMG, NULL);
+    game->over->texture = sfTexture_createFromFile(GAMEOVER_IMG, NULL);
     game->over->sprite = sfSprite_create();
     sfSprite_setTexture(game->over->sprite, game->over->texture, sfTrue);
+    sfSprite_setPosition(game->over->sprite, (sfVector2f){450, 300});
     game->over->opacity = 0;
     game->over->music = sfMusic_createFromFile(MUSIC_MENU);
 }

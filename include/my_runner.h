@@ -33,7 +33,7 @@
 #define ENEMY_WIDTH 120
 #define NB_ANIM_E 2
 #define NB_ANIM_P 8
-#define ANIME_TIME 0.15
+#define ANIME_TIME 0.12
 #define PLAYER_IMG "ressources/run_sprite.png"
 #define ENEMY_IMG "ressources/missile.png"
 #define DIRT_IMG "ressources/dirt.png"
@@ -42,6 +42,8 @@
 #define MIDDLE_IMG "ressources/city_middle.png"
 #define FRONT_IMG "ressources/city_front.png"
 #define SKY_IMG "ressources/sky.png"
+#define GAMEOVER_IMG "ressources/gameover.png"
+#define VICTORY_IMG "ressources/victory.png"
 #define PLAYER_SOUND "ressources/pidgey.ogg"
 #define MUSIC_MENU "ressources/music_menu.ogg"
 

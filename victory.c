@@ -10,9 +10,10 @@
 void init_vict(game_t *game)
 {
     game->vict = malloc(sizeof(vict_t));
-    game->vict->texture = sfTexture_createFromFile(FRONT_IMG, NULL);
+    game->vict->texture = sfTexture_createFromFile(VICTORY_IMG, NULL);
     game->vict->sprite = sfSprite_create();
     sfSprite_setTexture(game->vict->sprite, game->vict->texture, sfTrue);
+    sfSprite_setPosition(game->vict->sprite, (sfVector2f){450, 300});
     game->vict->music = sfMusic_createFromFile(MUSIC_MENU);
 }
 
