@@ -58,7 +58,7 @@ int collide_side(game_t *game, tile_t *tile)
 {
     if (game->player->pos.x + PLAYER_WIDTH > tile->pos.x && game->player->pos.x
         < tile->pos.x + TILE_SIZE && game->player->pos.y < tile->pos.y +
-        TILE_SIZE && game->player->pos.y + PLAYER_HEIGHT > tile->pos.y + 40)
+        TILE_SIZE && game->player->pos.y + PLAYER_HEIGHT > tile->pos.y + 30)
         return 1;
     return 0;
 }
