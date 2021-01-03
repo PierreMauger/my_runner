@@ -44,7 +44,7 @@
 #define SKY_IMG "ressources/sky.png"
 #define GAMEOVER_IMG "ressources/gameover.png"
 #define VICTORY_IMG "ressources/victory.png"
-#define PLAYER_SOUND "ressources/pidgey.ogg"
+#define PLAYER_SOUND "ressources/jump.ogg"
 #define MUSIC_MENU "ressources/music_menu.ogg"
 
 typedef struct {
