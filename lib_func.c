@@ -11,7 +11,7 @@ int my_strlen(char const *str)
 {
     int i = 0;
 
-    for (; str[i] != '\0' && str[i] != '\n'; i++);
+    for (; str[i]; i++);
     return i;
 }
 
@@ -24,6 +24,19 @@ char *my_strcat(char *dest, char const *src)
         dest[m + i + 1] = '\0';
     }
     return dest;
+}
+
+char *my_strcpy(char *dest, char const *src)
+{
+    char *start = dest;
+
+    while (*src != '\0') {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+    return start;
 }
 
 char *my_revstr(char *str)

@@ -30,12 +30,20 @@ void create_bg(game_t *game, int nb, int speed, char *img)
 void draw_bg(game_t *game)
 {
     for (int i = 0; i < bgSize; i++) {
-        sfRenderWindow_drawSprite(game->window, game->asset->array[i]->sprite, NULL);
-        sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f){sfSprite_getPosition(game->asset->array[i]->sprite).x + game->w_size.width, 0});
-        sfRenderWindow_drawSprite(game->window, game->asset->array[i]->sprite, NULL);
-        sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f){sfSprite_getPosition(game->asset->array[i]->sprite).x - game->w_size.width, 0});
-        if (-sfSprite_getPosition(game->asset->array[i]->sprite).x > game->w_size.width)
-            sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f){0, 0});
+        sfRenderWindow_drawSprite(game->window,
+        game->asset->array[i]->sprite, NULL);
+        sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f)
+        {sfSprite_getPosition(game->asset->array[i]->sprite).x +
+        game->w_size.width, 0});
+        sfRenderWindow_drawSprite(game->window,
+        game->asset->array[i]->sprite, NULL);
+        sfSprite_setPosition(game->asset->array[i]->sprite, (sfVector2f)
+        {sfSprite_getPosition(game->asset->array[i]->sprite).x -
+        game->w_size.width, 0});
+        if (-sfSprite_getPosition(game->asset->array[i]->sprite).x >
+        game->w_size.width)
+            sfSprite_setPosition(game->asset->array[i]->sprite,
+            (sfVector2f){0, 0});
     }
 }
 

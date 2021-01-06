@@ -11,6 +11,7 @@ sfRenderWindow *create_my_window(unsigned int width, unsigned int height)
 {
     sfRenderWindow *window;
     sfVideoMode video_mode;
+
     video_mode.width = width;
     video_mode.height = height;
     video_mode.bitsPerPixel = 32;
