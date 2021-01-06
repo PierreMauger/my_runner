@@ -34,6 +34,9 @@
 #define NB_ANIM_E 2
 #define NB_ANIM_P 8
 #define ANIME_TIME 0.12
+#define MENU_INFO_IMG "ressources/sprites/dirt.png"
+#define OVER_INFO_IMG "ressources/sprites/dirt.png"
+#define VICT_INFO_IMG "ressources/sprites/dirt.png"
 #define PLAYER_IMG "ressources/sprites/run_sprite.png"
 #define ENEMY_IMG "ressources/sprites/missile.png"
 #define DIRT_IMG "ressources/sprites/dirt.png"
@@ -45,7 +48,7 @@
 #define SKY_IMG "ressources/sprites/sky.png"
 #define GAMEOVER_IMG "ressources/sprites/gameover.png"
 #define VICTORY_IMG "ressources/sprites/victory.png"
-#define PLAYER_SOUND "ressources/sprites/jump.ogg"
+#define PLAYER_SOUND "ressources/musics/jump.ogg"
 #define MUSIC_MENU "ressources/musics/music_menu.ogg"
 #define MUSIC_GAME "ressources/musics/music_game.ogg"
 #define MUSIC_VICT "ressources/musics/music_vict.ogg"
@@ -107,12 +110,18 @@ typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
+    sfTexture *tinfo;
+    sfSprite *sinfo;
+    int info_op;
 } menu_t;
 
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
+    sfTexture *tinfo;
+    sfSprite *sinfo;
+    int info_op;
     int opacity;
 } over_t;
 
@@ -120,6 +129,10 @@ typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
+    sfTexture *tinfo;
+    sfSprite *sinfo;
+    int info_op;
+    int info_add;
     int opacity;
 } vict_t;
 
@@ -192,6 +205,7 @@ void draw_all(game_t *game);
 void game_loop(game_t *game);
 
 void init_over(game_t *game);
+void over_draw(game_t *game);
 void over_loop(game_t *game, char *buffer);
 void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest);
 void destroy_over(over_t *over);
@@ -201,6 +215,7 @@ void menu_loop(game_t *game);
 void destroy_menu(menu_t *menu);
 
 void init_vict(game_t *game);
+void victory_draw(game_t *game);
 void victory_loop(game_t *game, char *buffer);
 void destroy_vict(vict_t *vict);
 
