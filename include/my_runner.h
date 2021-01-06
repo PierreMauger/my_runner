@@ -213,6 +213,7 @@ void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest);
 void destroy_over(over_t *over);
 
 void init_menu(game_t *game);
+void menu_draw(game_t *game);
 void menu_loop(game_t *game);
 void destroy_menu(menu_t *menu);
 

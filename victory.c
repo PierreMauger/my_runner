@@ -30,9 +30,11 @@ void victory_draw(game_t *game)
     sfSprite_setColor(game->vict->sprite, sfColor_fromRGBA(255, 255, 255,
     game->vict->opacity));
     sfRenderWindow_drawSprite(game->window, game->vict->sprite, NULL);
-    sfSprite_setColor(game->vict->sinfo, sfColor_fromRGBA(255, 255, 255,
-    game->vict->info_op));
-    sfRenderWindow_drawSprite(game->window, game->vict->sinfo, NULL);
+    if (game->vict->opacity == 254) {
+        sfSprite_setColor(game->vict->sinfo, sfColor_fromRGBA(255, 255, 255,
+        game->vict->info_op));
+        sfRenderWindow_drawSprite(game->window, game->vict->sinfo, NULL);
+    }
     sfRenderWindow_display(game->window);
 }
 
@@ -40,7 +42,7 @@ void victory_loop(game_t *game, char *buffer)
 {
     if (game->vict->opacity < 254)
         game->vict->opacity += 2;
-    if (game->vict->info_op < 1 || game->vict->info_op > 253)
+    if (game->vict->info_op < 2 || game->vict->info_op > 253)
         game->vict->info_add *= -1;
     game->vict->info_op += game->vict->info_add;
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {

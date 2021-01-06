@@ -30,9 +30,11 @@ void over_draw(game_t *game)
     sfSprite_setColor(game->over->sprite, sfColor_fromRGBA(255, 255, 255,
     game->over->opacity));
     sfRenderWindow_drawSprite(game->window, game->over->sprite, NULL);
-    sfSprite_setColor(game->over->sinfo, sfColor_fromRGBA(255, 255, 255,
-    game->over->info_op));
-    sfRenderWindow_drawSprite(game->window, game->over->sinfo, NULL);
+    if (game->over->opacity == 254) {
+        sfSprite_setColor(game->over->sinfo, sfColor_fromRGBA(255, 255, 255,
+        game->over->info_op));
+        sfRenderWindow_drawSprite(game->window, game->over->sinfo, NULL);
+    }
     sfRenderWindow_display(game->window);
 }
 
@@ -40,7 +42,7 @@ void over_loop(game_t *game, char *buffer)
 {
     if (game->over->opacity < 254)
         game->over->opacity += 2;
-    if (game->over->info_op < 1 || game->over->info_op > 253)
+    if (game->over->info_op < 2 || game->over->info_op > 253)
         game->over->info_add *= -1;
     game->over->info_op += game->over->info_add;
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
