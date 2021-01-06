@@ -26,11 +26,11 @@
 #define GAME_OVER 2
 #define VICTORY 3
 #define JUMP_HEIGHT -25
-#define TILE_SIZE 100
+#define TILE_SIZE 80
 #define PLAYER_HEIGHT 160
 #define PLAYER_WIDTH 92
-#define ENEMY_HEIGHT 80
-#define ENEMY_WIDTH 120
+#define ENEMY_HEIGHT 68
+#define ENEMY_WIDTH 128
 #define NB_ANIM_E 2
 #define NB_ANIM_P 8
 #define ANIME_TIME 0.12
