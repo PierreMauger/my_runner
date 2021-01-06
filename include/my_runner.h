@@ -200,7 +200,6 @@ void destroy_over(over_t *over);
 void init_menu(game_t *game);
 void menu_loop(game_t *game);
 void destroy_menu(menu_t *menu);
-void go_to_menu(game_t *game);
 
 void init_vict(game_t *game);
 void victory_loop(game_t *game, char *buffer);

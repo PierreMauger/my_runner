@@ -40,9 +40,3 @@ void destroy_menu(menu_t *menu)
     sfSprite_destroy(menu->sprite);
     sfMusic_destroy(menu->music);
 }
-
-void go_to_menu(game_t *game)
-{
-    change_music(game->over->music, game->menu->music);
-    game->state = MENU;
-}
