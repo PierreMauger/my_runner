@@ -13,7 +13,6 @@ void change_music(sfMusic *old_source, sfMusic *new_source)
     sfMusic_play(new_source);
 }
 
-
 void runner(char *buffer)
 {
     game_t *game = malloc(sizeof(game_t));

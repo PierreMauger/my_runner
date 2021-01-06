@@ -51,9 +51,9 @@ void move_player(game_t *game)
 
 int collide_tile(game_t *game, tile_t *tile)
 {
-    if (game->player->pos.y + PLAYER_HEIGHT >= tile->pos.y &&
-        game->player->pos.x < tile->pos.x + TILE_SIZE && game->player->pos.x +
-        PLAYER_WIDTH > tile->pos.x && tile->solid == 1)
+    if (game->player->pos.x + PLAYER_WIDTH > tile->pos.x && game->player->pos.x
+    < tile->pos.x + TILE_SIZE && game->player->pos.y < tile->pos.y + TILE_SIZE
+    && game->player->pos.y + PLAYER_HEIGHT >= tile->pos.y && tile->solid == 1)
         return 1;
     return 0;
 }
@@ -61,9 +61,9 @@ int collide_tile(game_t *game, tile_t *tile)
 int collide_side(game_t *game, tile_t *tile)
 {
     if (game->player->pos.x + PLAYER_WIDTH > tile->pos.x && game->player->pos.x
-        < tile->pos.x + TILE_SIZE && game->player->pos.y < tile->pos.y +
-        TILE_SIZE && game->player->pos.y + PLAYER_HEIGHT > tile->pos.y + 30 &&
-        tile->solid == 1)
+    < tile->pos.x + TILE_SIZE && game->player->pos.y < tile->pos.y + TILE_SIZE
+    && game->player->pos.y + PLAYER_HEIGHT > tile->pos.y + 30 && tile->solid ==
+    1)
         return 1;
     return 0;
 }

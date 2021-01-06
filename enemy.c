@@ -24,8 +24,8 @@ void put_in_enemy_list(enemy_t **enemy, sfVector2f pos, char *asset)
 void spawn_entity(game_t *game)
 {
     for (int i = 0; i < game->map_size / 10; i++)
-        put_in_enemy_list(&game->enemy, (sfVector2f){rand() % (game->map_size -
-        100) * TILE_SIZE + 1000, rand() % 300 + 100}, ENEMY_IMG);
+        put_in_enemy_list(&game->enemy, (sfVector2f){rand() % game->map_size *
+        TILE_SIZE + 1000, rand() % 200 + 100}, ENEMY_IMG);
 }
 
 void draw_enemy(game_t *game)

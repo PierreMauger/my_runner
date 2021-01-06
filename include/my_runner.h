@@ -31,7 +31,7 @@
 #define PLAYER_WIDTH 92
 #define ENEMY_HEIGHT 52
 #define ENEMY_WIDTH 252
-#define NB_ANIM_E 2
+#define NB_ANIM_E 3
 #define NB_ANIM_P 8
 #define ANIME_TIME 0.12
 #define MENU_INFO_IMG "ressources/sprites/dirt.png"
