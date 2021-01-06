@@ -46,6 +46,7 @@
 #define VICTORY_IMG "ressources/victory.png"
 #define PLAYER_SOUND "ressources/jump.ogg"
 #define MUSIC_MENU "ressources/music_menu.ogg"
+#define MUSIC_GAME "ressources/music_game.ogg"
 #define MUSIC_VICT "ressources/music_vict.ogg"
 #define MUSIC_OVER "ressources/music_over.ogg"
 

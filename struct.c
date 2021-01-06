@@ -24,7 +24,7 @@ void init_struct(game_t *game)
 {
     game->w_size = (sfVideoMode){1920, 1080, 32};
     game->window = create_my_window(game->w_size.width, game->w_size.height);
-    game->music = sfMusic_createFromFile(MUSIC_MENU);
+    game->music = sfMusic_createFromFile(MUSIC_GAME);
     init_bg(game);
     init_text(game);
     init_player(game);
