@@ -15,13 +15,34 @@ void init_over(game_t *game)
     sfSprite_setTexture(game->over->sprite, game->over->texture, sfTrue);
     sfSprite_setPosition(game->over->sprite, (sfVector2f){450, 300});
     game->over->opacity = 0;
+    game->over->tinfo = sfTexture_createFromFile(OVER_INFO_IMG, NULL);
+    game->over->sinfo = sfSprite_create();
+    sfSprite_setTexture(game->over->sinfo, game->over->tinfo, sfTrue);
+    sfSprite_setPosition(game->over->sinfo, (sfVector2f){750, 750});
+    game->over->info_op = 10;
+    game->over->info_add = 2;
     game->over->music = sfMusic_createFromFile(MUSIC_OVER);
+}
+
+void over_draw(game_t *game)
+{
+    sfRenderWindow_clear(game->window, sfBlack);
+    sfSprite_setColor(game->over->sprite, sfColor_fromRGBA(255, 255, 255,
+    game->over->opacity));
+    sfRenderWindow_drawSprite(game->window, game->over->sprite, NULL);
+    sfSprite_setColor(game->over->sinfo, sfColor_fromRGBA(255, 255, 255,
+    game->over->info_op));
+    sfRenderWindow_drawSprite(game->window, game->over->sinfo, NULL);
+    sfRenderWindow_display(game->window);
 }
 
 void over_loop(game_t *game, char *buffer)
 {
     if (game->over->opacity < 254)
         game->over->opacity += 2;
+    if (game->over->info_op < 1 || game->over->info_op > 253)
+        game->over->info_add *= -1;
+    game->over->info_op += game->over->info_add;
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
@@ -30,11 +51,7 @@ void over_loop(game_t *game, char *buffer)
         if (game->event.key.code == sfKeySpace && game->over->opacity == 254)
             reset_game(game, game->over->music, buffer, PLAY);
     }
-    sfRenderWindow_clear(game->window, sfBlack);
-    sfSprite_setColor(game->over->sprite, sfColor_fromRGBA(255, 255, 255,
-    game->over->opacity));
-    sfRenderWindow_drawSprite(game->window, game->over->sprite, NULL);
-    sfRenderWindow_display(game->window);
+    over_draw(game);
 }
 
 void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest)

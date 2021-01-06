@@ -113,6 +113,7 @@ typedef struct {
     sfTexture *tinfo;
     sfSprite *sinfo;
     int info_op;
+    int info_add;
 } menu_t;
 
 typedef struct {
@@ -122,6 +123,7 @@ typedef struct {
     sfTexture *tinfo;
     sfSprite *sinfo;
     int info_op;
+    int info_add;
     int opacity;
 } over_t;
 
