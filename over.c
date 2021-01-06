@@ -15,7 +15,7 @@ void init_over(game_t *game)
     sfSprite_setTexture(game->over->sprite, game->over->texture, sfTrue);
     sfSprite_setPosition(game->over->sprite, (sfVector2f){450, 300});
     game->over->opacity = 0;
-    game->over->music = sfMusic_createFromFile(MUSIC_MENU);
+    game->over->music = sfMusic_createFromFile(MUSIC_OVER);
 }
 
 void over_loop(game_t *game, char *buffer)
@@ -26,9 +26,9 @@ void over_loop(game_t *game, char *buffer)
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
         if (game->event.key.code == sfKeyX && game->over->opacity == 255)
-            go_to_menu(game);
+            reset_game(game, game->over->music, buffer, MENU);
         if (game->event.key.code == sfKeySpace && game->over->opacity == 255)
-            reset_game(game, game->over->music, buffer);
+            reset_game(game, game->over->music, buffer, PLAY);
     }
     sfRenderWindow_clear(game->window, sfBlack);
     sfSprite_setColor(game->over->sprite, sfColor_fromRGBA(255, 255, 255,
@@ -37,9 +37,12 @@ void over_loop(game_t *game, char *buffer)
     sfRenderWindow_display(game->window);
 }
 
-void reset_game(game_t *game, sfMusic *old_source, char *buffer)
+void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest)
 {
-    change_music(old_source, game->music);
+    if (dest == MENU)
+        change_music(old_source, game->menu->music);
+    else
+        change_music(old_source, game->music);
     game->over->opacity = 0;
     sfSprite_setPosition(game->player->sprite, (sfVector2f){200, 400});
     game->tile = NULL;
@@ -48,7 +51,7 @@ void reset_game(game_t *game, sfMusic *old_source, char *buffer)
     spawn_entity(game);
     game->text->score = 0;
     game->player->jump = 1;
-    game->state = PLAY;
+    game->state = dest;
 }
 
 void destroy_over(over_t *over)

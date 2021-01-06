@@ -46,6 +46,8 @@
 #define VICTORY_IMG "ressources/victory.png"
 #define PLAYER_SOUND "ressources/jump.ogg"
 #define MUSIC_MENU "ressources/music_menu.ogg"
+#define MUSIC_VICT "ressources/music_vict.ogg"
+#define MUSIC_OVER "ressources/music_over.ogg"
 
 typedef struct {
     sfVector2f pos;
@@ -192,7 +194,7 @@ void game_loop(game_t *game);
 
 void init_over(game_t *game);
 void over_loop(game_t *game, char *buffer);
-void reset_game(game_t *game, sfMusic *old_source, char *buffer);
+void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest);
 void destroy_over(over_t *over);
 
 void init_menu(game_t *game);
