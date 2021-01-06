@@ -104,24 +104,20 @@ typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
-    //sprite_button
 } menu_t;
 
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
-    int opacity;
     sfMusic *music;
-    //sound
-    //sprite_button
+    int opacity;
 } over_t;
 
 typedef struct {
     sfTexture *texture;
     sfSprite *sprite;
     sfMusic *music;
-    //sound
-    //sprite_button
+    int opacity;
 } vict_t;
 
 typedef struct {

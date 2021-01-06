@@ -20,14 +20,14 @@ void init_over(game_t *game)
 
 void over_loop(game_t *game, char *buffer)
 {
-    if (game->over->opacity < 255)
-        game->over->opacity++;
+    if (game->over->opacity < 254)
+        game->over->opacity += 2;
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
-        if (game->event.key.code == sfKeyX && game->over->opacity == 255)
+        if (game->event.key.code == sfKeyX && game->over->opacity == 254)
             reset_game(game, game->over->music, buffer, MENU);
-        if (game->event.key.code == sfKeySpace && game->over->opacity == 255)
+        if (game->event.key.code == sfKeySpace && game->over->opacity == 254)
             reset_game(game, game->over->music, buffer, PLAY);
     }
     sfRenderWindow_clear(game->window, sfBlack);
@@ -43,12 +43,13 @@ void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest)
         change_music(old_source, game->menu->music);
     else
         change_music(old_source, game->music);
-    game->over->opacity = 0;
     sfSprite_setPosition(game->player->sprite, (sfVector2f){200, 400});
     game->tile = NULL;
     load_map(game, buffer);
     game->enemy = NULL;
     spawn_entity(game);
+    game->over->opacity = 0;
+    game->vict->opacity = 0;
     game->text->score = 0;
     game->player->jump = 1;
     game->state = dest;
