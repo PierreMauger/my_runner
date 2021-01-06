@@ -38,6 +38,7 @@
 #define ENEMY_IMG "ressources/missile.png"
 #define DIRT_IMG "ressources/dirt.png"
 #define GRASS_IMG "ressources/grass.png"
+#define TALL_GRASS_IMG "ressources/tall_grass.png"
 #define BACK_IMG "ressources/city_back.png"
 #define MIDDLE_IMG "ressources/city_middle.png"
 #define FRONT_IMG "ressources/city_front.png"
@@ -98,6 +99,7 @@ typedef struct tile {
     sfVector2f pos;
     sfTexture *texture;
     sfSprite *sprite;
+    int solid;
     struct tile *next;
 } tile_t;
 
@@ -170,7 +172,7 @@ void init_text(game_t *game);
 sfText *set_text(sfText *temp, text_t *text, sfColor color);
 void draw_text(game_t *game);
 
-void put_in_tile_list(tile_t **tile, sfVector2f pos, char *asset);
+void put_in_tile_list(tile_t **tile, sfVector2f pos, char *asset, int solid);
 void draw_map(game_t *game);
 void move_tiles(game_t *game);
 void load_map(game_t *game, char *buffer);

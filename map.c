@@ -7,7 +7,7 @@
 
 #include "my_runner.h"
 
-void put_in_tile_list(tile_t **tile, sfVector2f pos, char *asset)
+void put_in_tile_list(tile_t **tile, sfVector2f pos, char *asset, int solid)
 {
     tile_t *element = malloc(sizeof(tile_t));
 
@@ -17,6 +17,7 @@ void put_in_tile_list(tile_t **tile, sfVector2f pos, char *asset)
     sfSprite_setTexture(element->sprite, element->texture, sfTrue);
     sfSprite_setPosition(element->sprite, element->pos);
     element->next = *tile;
+    element->solid = solid;
     *tile = element;
 }
 
@@ -51,10 +52,13 @@ void load_map(game_t *game, char *buffer)
             line += 1;
         if (buffer[i + 4] == '0')
             put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
-            TILE_SIZE * game->map_size, line * TILE_SIZE}, GRASS_IMG);
+            TILE_SIZE * game->map_size, line * TILE_SIZE}, GRASS_IMG, 1);
         if (buffer[i + 4] == '1')
             put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
-            TILE_SIZE * game->map_size, line * TILE_SIZE}, DIRT_IMG);
+            TILE_SIZE * game->map_size, line * TILE_SIZE}, DIRT_IMG, 1);
+        if (buffer[i + 4] == '2')
+            put_in_tile_list(&game->tile, (sfVector2f){i * TILE_SIZE - line *
+            TILE_SIZE * game->map_size, line * TILE_SIZE}, TALL_GRASS_IMG, 0);
     }
 }
 
