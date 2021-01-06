@@ -27,6 +27,7 @@ void init_over(game_t *game)
 void over_draw(game_t *game)
 {
     sfRenderWindow_clear(game->window, sfBlack);
+    draw_text(game);
     sfSprite_setColor(game->over->sprite, sfColor_fromRGBA(255, 255, 255,
     game->over->opacity));
     sfRenderWindow_drawSprite(game->window, game->over->sprite, NULL);
@@ -62,6 +63,8 @@ void reset_game(game_t *game, sfMusic *old_source, char *buffer, int dest)
         change_music(old_source, game->menu->music);
     else
         change_music(old_source, game->music);
+    sfText_setPosition(game->text->score_text, (sfVector2f){100, 100});
+    sfText_setColor(game->text->score_text, sfBlack);
     sfSprite_setPosition(game->player->sprite, (sfVector2f){200, 400});
     game->tile = NULL;
     load_map(game, buffer);

@@ -27,6 +27,7 @@ void init_vict(game_t *game)
 void victory_draw(game_t *game)
 {
     sfRenderWindow_clear(game->window, sfBlack);
+    draw_text(game);
     sfSprite_setColor(game->vict->sprite, sfColor_fromRGBA(255, 255, 255,
     game->vict->opacity));
     sfRenderWindow_drawSprite(game->window, game->vict->sprite, NULL);
