@@ -16,8 +16,8 @@ SRC 		=	my_runner.c			\
 				menu.c				\
 				over.c				\
 				victory.c			\
-				lib_func.c			\
-				my_getnbr.c			\
+				lib_func1.c			\
+				lib_func2.c			\
 				enemy.c				\
 
 SRC_MAIN	=	main.c				\

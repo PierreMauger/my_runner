@@ -198,7 +198,10 @@ char *my_strcat(char *dest, char const *src);
 char *my_strcpy(char *dest, char const *src);
 char *my_revstr(char *str);
 char *my_put_nbr(int nb);
+
 int my_getnbr(char const *s);
+int my_strcmp(char *s1, char *s2);
+void my_putstr(char *str);
 
 int change_bool(int value);
 void event_loop(game_t *game);

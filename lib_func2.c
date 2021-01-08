@@ -5,6 +5,8 @@
 ** my_getnbr
 */
 
+#include "my_runner.h"
+
 static int my_getneg(char const *s)
 {
     int signe = 1;
@@ -41,4 +43,17 @@ int my_getnbr(char const *s)
     if (result > 2147483647 || result < -2147483647)
         return (0);
     return (result);
+}
+
+int my_strcmp(char *s1, char *s2)
+{
+    int i = 0;
+
+    for (; s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0'; i++);
+    return s1[i] - s2[i];
+}
+
+void my_putstr(char *str)
+{
+    write(1, str, my_strlen(str));
 }
