@@ -12,8 +12,8 @@ static void print_h(void)
     my_putstr("Last version of the runner, a CFSML project\n\nUSAGE:\n");
     my_putstr("./my_runner ressources/[map]\n\nLEVELS:\n\tmap1\n\tmap2\n\n");
     my_putstr("OPTION:\n-h\tprint the usage and quit\n\nUSER_INTERACTIONS:\n");
-    my_putstr("In game\n\tSpace: Jump\n\tP: Pause/Play\nIn menu\n\tX: Go to ");
-    my_putstr("menu\n\tSpace: Restart\n");
+    my_putstr("In game\n\tSpace: Jump/Double Jump\n\tP: Pause/Play\nIn menu");
+    my_putstr("\n\tX: Go to menu\n\tSpace: Restart\n");
 }
 
 int main(int argc, char **argv)
