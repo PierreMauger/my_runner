@@ -18,7 +18,7 @@ void init_vict(game_t *game)
     game->vict->tinfo = sfTexture_createFromFile(VICT_INFO_IMG, NULL);
     game->vict->sinfo = sfSprite_create();
     sfSprite_setTexture(game->vict->sinfo, game->vict->tinfo, sfTrue);
-    sfSprite_setPosition(game->vict->sinfo, (sfVector2f){750, 750});
+    sfSprite_setPosition(game->vict->sinfo, (sfVector2f){660, 750});
     game->vict->info_op = 10;
     game->vict->info_add = 2;
     game->vict->music = sfMusic_createFromFile(MUSIC_VICT);

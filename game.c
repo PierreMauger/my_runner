@@ -44,7 +44,7 @@ void update_all(game_t *game)
     game->text->score += 1;
     if (game->tile->pos.x + TILE_SIZE < 200) {
         change_music(game->music, game->vict->music);
-        sfText_setPosition(game->text->score_text, (sfVector2f){850, 850});
+        sfText_setPosition(game->text->score_text, (sfVector2f){780, 850});
         sfText_setColor(game->text->score_text, sfWhite);
         game->state = VICTORY;
     }

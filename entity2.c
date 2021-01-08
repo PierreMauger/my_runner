@@ -11,7 +11,7 @@ void check_all_collide(game_t *game, tile_t *temp)
 {
     if (collide_side(game, temp)) {
         change_music(game->music, game->over->music);
-        sfText_setPosition(game->text->score_text, (sfVector2f){850, 850});
+        sfText_setPosition(game->text->score_text, (sfVector2f){780, 850});
         sfText_setColor(game->text->score_text, sfWhite);
         game->state = GAME_OVER;
     }
@@ -40,7 +40,7 @@ void move_player(game_t *game)
     while (hits != NULL) {
         if (collide_hits(game, hits)) {
             change_music(game->music, game->over->music);
-            sfText_setPosition(game->text->score_text, (sfVector2f){850, 850});
+            sfText_setPosition(game->text->score_text, (sfVector2f){780, 850});
             sfText_setColor(game->text->score_text, sfWhite);
             game->state = GAME_OVER;
         }

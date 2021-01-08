@@ -17,7 +17,7 @@ void init_menu(game_t *game)
     game->menu->tinfo = sfTexture_createFromFile(MENU_INFO_IMG, NULL);
     game->menu->sinfo = sfSprite_create();
     sfSprite_setTexture(game->menu->sinfo, game->menu->tinfo, sfTrue);
-    sfSprite_setPosition(game->menu->sinfo, (sfVector2f){750, 750});
+    sfSprite_setPosition(game->menu->sinfo, (sfVector2f){660, 750});
     game->menu->info_op = 10;
     game->menu->info_add = 2;
     sfMusic_play(game->menu->music);

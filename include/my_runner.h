@@ -34,9 +34,9 @@
 #define NB_ANIM_E 3
 #define NB_ANIM_P 8
 #define ANIME_TIME 0.12
-#define MENU_INFO_IMG "ressources/sprites/dirt.png"
-#define OVER_INFO_IMG "ressources/sprites/dirt.png"
-#define VICT_INFO_IMG "ressources/sprites/dirt.png"
+#define MENU_INFO_IMG "ressources/sprites/text_start.png"
+#define OVER_INFO_IMG "ressources/sprites/text_restart.png"
+#define VICT_INFO_IMG "ressources/sprites/text_restart.png"
 #define PLAYER_IMG "ressources/sprites/run_sprite.png"
 #define ENEMY_IMG "ressources/sprites/missile.png"
 #define DIRT_IMG "ressources/sprites/dirt.png"

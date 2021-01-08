@@ -18,7 +18,7 @@ void init_over(game_t *game)
     game->over->tinfo = sfTexture_createFromFile(OVER_INFO_IMG, NULL);
     game->over->sinfo = sfSprite_create();
     sfSprite_setTexture(game->over->sinfo, game->over->tinfo, sfTrue);
-    sfSprite_setPosition(game->over->sinfo, (sfVector2f){750, 750});
+    sfSprite_setPosition(game->over->sinfo, (sfVector2f){660, 750});
     game->over->info_op = 10;
     game->over->info_add = 2;
     game->over->music = sfMusic_createFromFile(MUSIC_OVER);
